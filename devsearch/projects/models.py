@@ -34,7 +34,7 @@ class Review(models.Model):
     )
 
     def __str__(self):
-        return self.value
+        return f"{self.value} for {self.project}"
 
 
 class Tag(models.Model):
