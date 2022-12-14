@@ -5,8 +5,8 @@ from django.http import HttpResponse
 
 
 def projects(request):
-    return HttpResponse("Projects")
+    return render(request, "projects/projects.html")
 
 
 def project(request, pk):
-    return HttpResponse("Project" + pk)
+    return render(request, "projects/single-project.html")
