@@ -36,6 +36,9 @@ def updateProject(request, pk):
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
+            return redirect("projects")
+    context = {"form": form}
+    return render(request, "projects/project_form.html", context)
 
 
 def deleteProject(request, pk):
