@@ -29,7 +29,7 @@
           {% for profile in profiles %}
           <div class="column card">
             <div class="dev">
-              <a href="" class="card__body">
+              <a href="{% url "user-profile" profile.id %}" class="card__body">
                 <div class="dev__profile">
                   <img class="avatar avatar--md" src="{{profile.profile_pic.url}}" alt="image" />
                   <div class="dev__meta">
@@ -41,7 +41,7 @@
                  {{profile.bio | truncatewords:"18" }}
                 </p>
                 <div class="dev__skills">
-                  {% for skill in profile.skill_set.all %}
+                  {% for skill in profile.skill_set.all|slice:"5" %}
                   <span class="tag tag--pill tag--main">
                     <small>{{skill}}</small>
                   </span>
