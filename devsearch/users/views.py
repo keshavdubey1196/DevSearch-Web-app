@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from .models import Profile
 from django.contrib import messages
 from .forms import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -69,3 +71,14 @@ def userProfile(request, pk):
     otherskills = profile.skill_set.filter(description="")
     context = {"profile": profile, "topskills": topskills, "otherskills": otherskills}
     return render(request, "users/user-profile.html", context)
+
+
+@login_required(login_url="login")
+def userAccount(request):
+    # (request.user) will give us the current logged in user information
+    # (request.user.profile) will give us the current logged in user profile
+    profile = request.user.profile
+    skills = profile.skill_set.all()
+    projects = profile.project_set.all()  # to fetch child model info from parent model
+    context = {"profile": profile, "skills": skills, "projects": projects}
+    return render(request, "users/account.html", context)
