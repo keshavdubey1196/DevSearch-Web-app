@@ -3,7 +3,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .models import Profile
 from django.contrib import messages
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -51,7 +51,7 @@ def registerUser(request):
 
             messages.success(request, "User successfully registered")
             login(request, user)
-            return redirect("profiles")
+            return redirect("edit-account")
         else:
             messages.success(request, "An error has occured during registration")
 
@@ -82,3 +82,17 @@ def userAccount(request):
     projects = profile.project_set.all()  # to fetch child model info from parent model
     context = {"profile": profile, "skills": skills, "projects": projects}
     return render(request, "users/account.html", context)
+
+
+@login_required(login_url="login")
+def editAccount(request):
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect("account")
+
+    context = {"form": form}
+    return render(request, "users/profile_form.html", context)
