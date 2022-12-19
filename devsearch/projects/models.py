@@ -24,6 +24,10 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    class Meta:
+        ordering = ["created"]  # first project first
+        # ordering = ["created"]  last project first
+
 
 class Review(models.Model):
     VOTE_TYPE = (("up", "Up Vote"), ("down", "Down Vote"))
