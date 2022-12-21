@@ -11,7 +11,8 @@ from django.db.models import Q
 # from .models import Tag
 from .utils import searchProjects
 from .utils import paginateProjects
-
+from .form import ReviewForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -30,7 +31,20 @@ def projects(request):
 
 def project(request, pk):
     projectObj = Project.objects.get(id=pk)
-    context = {"project": projectObj}
+    form = ReviewForm()
+    if request.method == "POST":
+        form = ReviewForm(request.POST)
+        review = form.save(commit=False)
+        review.project = projectObj
+        review.owner = request.user.profile
+        review.save()
+
+        projectObj.getVoteCount
+
+        messages.success(request, "Reveiw successfully submitted")
+        return redirect("project", pk=projectObj.id)
+
+    context = {"project": projectObj, "form": form}
     return render(request, "projects/single-project.html", context)
 
 
