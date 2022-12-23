@@ -8,3 +8,4 @@ https://docs.djangoproject.com/en/4.1/topics/pagination/
 
 https://docs.djangoproject.com/en/4.1/topics/signals/#:~:text=Django%20includes%20a%20%E2%80%9Csignal%20dispatcher,some%20action%20has%20taken%20place.
 
+https://www.django-rest-framework.org/#quickstart
