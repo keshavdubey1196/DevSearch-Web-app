@@ -1,0 +1,10 @@
+https://docs.djangoproject.com/en/4.1/topics/email/
+
+https://support.google.com/mail/answer/7126229?hl=en#zippy=%2Cstep-check-that-imap-is-turned-on%2Cstep-change-smtp-other-settings-in-your-email-client
+
+https://docs.djangoproject.com/en/4.1/topics/auth/default/#module-django.contrib.auth.views
+
+https://docs.djangoproject.com/en/4.1/topics/pagination/
+
+https://docs.djangoproject.com/en/4.1/topics/signals/#:~:text=Django%20includes%20a%20%E2%80%9Csignal%20dispatcher,some%20action%20has%20taken%20place.
+
