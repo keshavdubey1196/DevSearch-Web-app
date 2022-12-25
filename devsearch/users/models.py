@@ -32,6 +32,18 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.username)
+    
+    @property
+    def imageURL(self):
+        try:
+            url=self.profile_pic.url
+        except:
+            url=''
+        return url
+    
+    class Meta:
+        ordering = ["created"]  # first project first
+        # ordering = ["created"]  last project first
 
 
 class Skill(models.Model):

@@ -8,7 +8,7 @@ from users.models import Profile
 class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     featured_image = models.ImageField(null=True, blank=True, default="default.jpg")
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
     source_link = models.CharField(max_length=2000, null=True, blank=True)
@@ -27,6 +27,14 @@ class Project(models.Model):
     class Meta:
         ordering = ["-vote_ratio", "-vote_total", "title"]  # first project first
         # ordering = ["created"]  last project first
+    
+    @property
+    def imageURL(self):
+        try:
+            url=self.featured_image.url
+        except:
+            url=''
+        return url
 
     @property
     def reviewers(self):
