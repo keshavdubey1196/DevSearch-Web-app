@@ -149,8 +149,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "devsearch",
         "USER":"keshavdubey",
-        "PASSWORD":"KS146123",
-        "HOST": "database-1.clece6pnoeyu.ap-northeast-1.rds.amazonaws.com",
+        "PASSWORD":"keshav12345",
+        "HOST": "database-1.codugqhagsaw.ap-south-1.rds.amazonaws.com",
         "PORT":"5432",
     }
 }
